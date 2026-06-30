@@ -4,11 +4,12 @@ import { updateTicketStatusSchema } from "@/lib/validation";
 
 export async function GET(
   _request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params:Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const ticket = await prisma.ticket.findUnique({
-      where: { id: params.id },
+      where: {  id },
     });
 
     if (!ticket) {
@@ -35,9 +36,10 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const body = await request.json();
 
     const parseResult = updateTicketStatusSchema.safeParse(body);
@@ -52,7 +54,7 @@ export async function PATCH(
     }
 
     const existing = await prisma.ticket.findUnique({
-      where: { id: params.id },
+      where: { id },
     });
 
     if (!existing) {
@@ -60,7 +62,7 @@ export async function PATCH(
     }
 
     const updated = await prisma.ticket.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         status: parseResult.data.status,
         updatedAt: new Date(),

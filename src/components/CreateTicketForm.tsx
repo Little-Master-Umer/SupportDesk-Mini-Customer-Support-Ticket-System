@@ -31,6 +31,7 @@ export function CreateTicketForm({ onTicketCreated }: Props) {
   const [globalError, setGlobalError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+
   function handleChange(
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -42,19 +43,23 @@ export function CreateTicketForm({ onTicketCreated }: Props) {
     setGlobalError("");
     setSuccess(false);
   }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setErrors({});
     setGlobalError("");
     setSuccess(false);
+
     try {
       const res = await fetch("/api/tickets", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
+
       const data = await res.json();
+
       if (!res.ok) {
         if (data.details) {
           setErrors(data.details);
@@ -63,6 +68,7 @@ export function CreateTicketForm({ onTicketCreated }: Props) {
         }
         return;
       }
+
       setForm(INITIAL_FORM);
       setSuccess(true);
       onTicketCreated();

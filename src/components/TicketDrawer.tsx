@@ -24,8 +24,10 @@ export function TicketDrawer({ ticketId, onClose, onStatusUpdate }: Props) {
       setTicket(null);
       return;
     }
+
     setLoading(true);
     setUpdateError("");
+
     fetch(`/api/tickets/${ticketId}`)
       .then((r) => r.json())
       .then((data) => {
@@ -50,6 +52,7 @@ export function TicketDrawer({ ticketId, onClose, onStatusUpdate }: Props) {
       });
 
       const data = await res.json();
+
       if (!res.ok) {
         setUpdateError(data.error ?? "Update failed.");
         return;
@@ -70,11 +73,15 @@ export function TicketDrawer({ ticketId, onClose, onStatusUpdate }: Props) {
 
   return (
     <>
+      {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black/60 z-40 backdrop-blur-sm"
         onClick={onClose}
       />
+
+      {/* Drawer panel */}
       <div className="fixed right-0 top-0 h-full w-full max-w-lg bg-black border-l z-50 flex flex-col shadow-2xl">
+        {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-700">
           <h2 className="text-lg font-bold text-white">Ticket Details</h2>
           <button
@@ -84,6 +91,8 @@ export function TicketDrawer({ ticketId, onClose, onStatusUpdate }: Props) {
             <X size={20} />
           </button>
         </div>
+
+        {/* Body */}
         <div className="flex-1 overflow-y-auto px-6 py-5">
           {loading && (
             <div className="flex items-center justify-center py-20">
@@ -93,6 +102,7 @@ export function TicketDrawer({ ticketId, onClose, onStatusUpdate }: Props) {
 
           {!loading && ticket && (
             <div className="space-y-5">
+              {/* Urgent flag */}
               {ticket.isUrgent && (
                 <div className="flex items-center gap-2 bg-red-950 border border-red-700 rounded-lg px-4 py-3">
                   <AlertTriangle size={16} className="text-red-400 shrink-0" />
@@ -101,6 +111,8 @@ export function TicketDrawer({ ticketId, onClose, onStatusUpdate }: Props) {
                   </span>
                 </div>
               )}
+
+              {/* Past tickets notice */}
               {ticket.pastTicketsCount > 0 && (
                 <div className="flex items-center gap-2 bg-slate-800 border border-slate-600 rounded-lg px-4 py-3">
                   <Users size={16} className="text-slate-400 shrink-0" />
@@ -113,6 +125,8 @@ export function TicketDrawer({ ticketId, onClose, onStatusUpdate }: Props) {
                   </span>
                 </div>
               )}
+
+              {/* Meta */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">
@@ -160,12 +174,16 @@ export function TicketDrawer({ ticketId, onClose, onStatusUpdate }: Props) {
                   </p>
                 </div>
               </div>
+
+              {/* Subject */}
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">
                   Subject
                 </p>
                 <p className="text-white text-sm font-semibold">{ticket.subject}</p>
               </div>
+
+              {/* Description */}
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">
                   Description
@@ -176,6 +194,8 @@ export function TicketDrawer({ ticketId, onClose, onStatusUpdate }: Props) {
                   </p>
                 </div>
               </div>
+
+              {/* Status update */}
               <div className="border-t border-slate-700 pt-5">
                 <p className="text-xs text-slate-500 uppercase tracking-wider mb-2">
                   Update Status
