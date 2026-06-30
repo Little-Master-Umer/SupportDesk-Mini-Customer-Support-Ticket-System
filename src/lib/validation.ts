@@ -31,7 +31,6 @@ export type CreateTicketInput = z.infer<typeof createTicketSchema>;
 export type UpdateTicketStatusInput = z.infer<typeof updateTicketStatusSchema>;
 
 //check weather ticket should be marked urgent or not on the basis of the description word "urgent" or priority
-
 export function computeIsUrgent(
   priority: string,
   description: string
