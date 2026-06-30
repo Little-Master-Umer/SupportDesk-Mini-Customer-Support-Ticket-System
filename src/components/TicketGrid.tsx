@@ -80,7 +80,7 @@ export function TicketGrid({ refreshKey, onSelectTicket }: Props) {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search name, email, subject…"
-            className="w-full border rounded-lg pl-9 pr-3 py-2 text-sm text-black placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full bg-white border rounded-lg pl-9 pr-3 py-2 text-sm text-black placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
