@@ -44,10 +44,8 @@ export default function Home() {
     void updated; // ticket grid will refresh on close; drawer handles optimistic UI
     setRefreshKey((k) => k + 1);
   }
-
   return (
     <div className="min-h-screen  text-white">
-      {/* Top nav */}
       <header className="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-30">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
@@ -63,15 +61,9 @@ export default function Home() {
           </button>
         </div>
       </header>
-
-      {/* Main layout */}
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 py-6">
-        {/* Stats */}
         <DashboardStatsGrid stats={stats} />
-
-        {/* Two-column: sidebar + main */}
         <div className="flex gap-6 flex-col lg:flex-row">
-          {/* Sidebar: Create form */}
           <aside className="lg:w-80 shrink-0">
             <div className="bg-black border rounded-2xl p-5 sticky top-20">
               <h2 className="text-sm font-bold text-white mb-1">
@@ -83,8 +75,6 @@ export default function Home() {
               <CreateTicketForm onTicketCreated={handleTicketCreated} />
             </div>
           </aside>
-
-          {/* Main: Ticket grid */}
           <main className="flex-1 min-w-0">
             <div className="bg-black border rounded-2xl p-5">
               <div className="flex items-center justify-between mb-4">
@@ -101,8 +91,6 @@ export default function Home() {
           </main>
         </div>
       </div>
-
-      {/* Drawer */}
       <TicketDrawer
         ticketId={selectedTicketId}
         onClose={() => setSelectedTicketId(null)}
