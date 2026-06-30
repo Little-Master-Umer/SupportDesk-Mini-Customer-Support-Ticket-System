@@ -91,7 +91,7 @@ export function CreateTicketForm({ onTicketCreated }: Props) {
           value={form.customerName}
           onChange={handleChange}
           placeholder="Umer Afaq"
-          className="w-full border border-slate-600 rounded-lg px-3 py-2 text-sm text-black placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full bg-white border border-slate-600 rounded-lg px-3 py-2 text-sm text-black placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         {errors.customerName && (
           <p className="text-red-400 text-xs mt-1">{errors.customerName[0]}</p>
@@ -108,7 +108,7 @@ export function CreateTicketForm({ onTicketCreated }: Props) {
           value={form.customerEmail}
           onChange={handleChange}
           placeholder="omer@example.com"
-          className="w-full border border-slate-600 rounded-lg px-3 py-2 text-sm text-black placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full bg-white border border-slate-600 rounded-lg px-3 py-2 text-sm text-black placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         {errors.customerEmail && (
           <p className="text-red-400 text-xs mt-1">{errors.customerEmail[0]}</p>
@@ -125,7 +125,7 @@ export function CreateTicketForm({ onTicketCreated }: Props) {
           value={form.subject}
           onChange={handleChange}
           placeholder="Cannot log into account"
-          className="w-full border border-slate-600 rounded-lg px-3 py-2 text-sm text-black placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full  bg-white border border-slate-600 rounded-lg px-3 py-2 text-sm text-black placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         {errors.subject && (
           <p className="text-red-400 text-xs mt-1">{errors.subject[0]}</p>
@@ -140,7 +140,7 @@ export function CreateTicketForm({ onTicketCreated }: Props) {
           name="priority"
           value={form.priority}
           onChange={handleChange}
-          className="w-full border border-slate-600 rounded-lg px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full  bg-white border border-slate-600 rounded-lg px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="LOW">Low</option>
           <option value="MEDIUM">Medium</option>
@@ -164,7 +164,7 @@ export function CreateTicketForm({ onTicketCreated }: Props) {
           onChange={handleChange}
           rows={4}
           placeholder="Describe the issue in detail..."
-          className="w-full  border border-slate-600 rounded-lg px-3 py-2 text-sm text-black placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+          className="w-full bg-white  border border-slate-600 rounded-lg px-3 py-2 text-sm text-black placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
         />
         {errors.description && (
           <p className="text-red-200 text-xs mt-1">{errors.description[0]}</p>
