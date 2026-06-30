@@ -14,7 +14,7 @@ Database: SQLite
 
 Validation: Zod
 
-Testing: Jest , Supertest
+Testing: node base written tests
 
 ---
 
